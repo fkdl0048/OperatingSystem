@@ -82,3 +82,20 @@ ex) Write(), Fork()
 
 캐시가 작지만 빠르기 때문에, 캐시에 데이터를 저장하고, CPU에 전달하는 것이 더 빠르다.
 
+## 03/22
+
+### interrupt driven
+
+- Hardware interrupt
+
+Hardware interrupt by one of the devices
+
+장치 중 하나에 의한 하드웨어가 중단됩니다
+
+- Software interrupt
+
+소프트웨어 오류 (예 : zero exception)  
+운영 체제 서비스 요청  
+다른 프로세스 문제에는 무한 루프, 프로세스가 포함됩니다  
+서로 또는 운영 체제 수정  
+
