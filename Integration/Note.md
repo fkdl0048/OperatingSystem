@@ -1,6 +1,7 @@
 # OperatingSystem Note
 
-## 1장.
+## 1장. 서론
+
 
 
 
