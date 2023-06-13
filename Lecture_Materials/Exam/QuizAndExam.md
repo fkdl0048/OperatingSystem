@@ -20,7 +20,7 @@ ex) 하나의 소프트웨어이다. 하드웨어를 관리하는 소프트웨�
 
 ## 3. scheduling에 대한 정의
 
-(1+1) 일반적으로 scheduling 이란 무엇이며 언제 scheduling 이 발생하는가? 
+(1+1) 일반적으로 scheduling 이란 무엇이며 언제 scheduling 이 발생하는가?
 
 (CPU 스케줄링, I/O 스케줄링을 구분하여 각각 제시해야 함)
 
@@ -87,12 +87,11 @@ disk access time 이란? 이것은 무엇에 의해서 지배를 받으며 시�
 1. First Come, First Service
 2. Elevator(SCAN) algorithm (initially moved upward)
 
-
 ## 14. time sharing
 
 현재 컴퓨터 내에서 A 프로그램과 B 프로그램이 동시(time sharing)에 수행되고 있다고 가정하자. A 프로그램이 Data read instruction (I/O instruction) 을 수행하고 있고 B 프로그램이 수학적 계산 프로그램 (CPU instruction)을 수행하고 있는 경우 OPTIMAL 한 Operating System 이 하는 일을 I/O 관련 사항 (device, controller, driver)을 포함하여 매우 상세히 설명하라.
 
-## 15. 
+## 15
 
 아래의 instruction 에서 address binding 은 compile time, load time, 그리고 execution time 등 3가지 경우에 발생할 수 있다. 세 가지가 발생할 때의 기계어 코드의 내용 변환 (if any) 을 쓰고, 이 세 가지중 가장 효율적이라고 생각되는 방법과 가장 비효율적이라고 생각되는 방법을 한 가지씩 선택하고 그 이유를 간략히 설명하라.
 
@@ -102,7 +101,7 @@ Load R7, abc : 메모리 abc 의 내용을 레지스터 7번에 저장
 
 (1010 : load, 0111 : register 7, XXXXXXXX : the rest 8bits are Memory address)
 
-## 16. 
+## 16
 
 다음의 서로 다른 성격의 프로그램이 있다(below there are two different programs)
 
