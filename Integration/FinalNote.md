@@ -313,6 +313,39 @@ LRU는 각 페이지마다 마지막 사용 시간을 유지하고, 페이지 �
 
 LRU 알고리즘은 페이지 교체 알고리즘으로 자주 사용되며, 좋은 알고리즘으로 인정받고 있다.
 
+## Mass-Storage Systems
+
+Mass-Storage
+
+- 비휘발성 (non-voliatie, Secondary Storage
+- 보통 하드디스크나 NVM이라 칭함, 제 2 저장 장치 혹은 보조 저장장치라고 함
+- 때로는 마그네틱 테입이나, 광학 디스크, 클라우드 저장소를 사용하는 경우가 있음
+
+![image](https://github.com/fkdl0048/ToDo/assets/84510455/e3256ba3-0282-4c8e-8e83-5149917efd30)
+
+- FIFO Scheduling
+  - 먼저 온 요청을 먼저 처리. head movement가 효율적이지는 않음
+
+![image](https://github.com/fkdl0048/ToDo/assets/84510455/4eead257-d489-4cb2-9d6b-cc842ccdcccd)
+
+
+- SCAN Scheduling
+  - 한쪽 종단에서 종단으로 계속 움직이면서 들어온 Request들을 처리함
+  - 하지만 양방향으로 움직이는 것 보다는 한 방향으로 움직이는 게 구현이 편하기 때문에 S-SCAN이라는 게 나옴
+
+![image](https://github.com/fkdl0048/ToDo/assets/84510455/c222bfa0-cb2d-4c07-b898-4490a116da19)
+
+
+- C-SCAN (Circular-SCAN) Scheduling
+  - 한 방향으로만 헤드를 움직이고, 시작점에서 끝점까지 읽어들인 다음에 되돌아올때에는 아무것도 읽지 않고 다시 첫 시작점으로 돌아온다 (단, 되돌아올 떄 움직임은 무시함)
+
+![image](https://github.com/fkdl0048/ToDo/assets/84510455/c81285c7-6490-47c3-8a5c-9856fefbf7df)
+
+
+- Boot Block
+  - 전원이 꺼졌을 때 컴퓨터를 구동시키기 위한 첫번째 프로그램을 bootstrap이라 했지!
+Boot Block을 flash memory(ROM)에 저장함
+
 ## 13장. File System Interface
 
 - 파일은 운영체제의 의하여 정의되고 구현되는 추상적인 자료형이다.
