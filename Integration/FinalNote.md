@@ -346,6 +346,42 @@ Mass-Storage
   - 전원이 꺼졌을 때 컴퓨터를 구동시키기 위한 첫번째 프로그램을 bootstrap이라 했지!
 Boot Block을 flash memory(ROM)에 저장함
 
+## 12장. I/O Systems
+
+대부분 컴퓨팅에서 I/O는 주된 작업임
+
+I/O 명령어와 I/O 장치들을 제어하는 것은 OS의 할 일
+
+PC bus (CPU가 bus를 통해 각 영역의 컨트롤러에게 명령을 내림!)
+
+![image](https://github.com/fkdl0048/ToDo/assets/84510455/06f7e894-776e-425b-bb41-ff0009957973)
+
+- Memory-Mapped I/O--
+  - I/O 장치에 내리는 명령을 어떻게 전달할 것인가?
+    - data-in register
+    - data-out register
+    - status register
+    - control register
+  - Memory-mapped I/O : I/O Address에 어떤 interrupt controller가 매핑되어 있는 지 메모리에 매핑시켜둠
+  - 그래서 디바이스에 직접 명령어를 전달하지 않고, 메모리에 I/O 명령을 주어서 control register의 역할을 할 수 있게 됨
+
+세 가지 유형의 I/O
+
+- polling : or busy-waiting
+
+상태 레지스터의 상태를 계속 읽으면서 원하는 값이 올때까지 기다림
+
+- interrupt
+
+interrupt driven I/O : wait 과 signal (이미지 첨부)
+
+![image](https://github.com/fkdl0048/ToDo/assets/84510455/30136320-59ee-48f4-831e-69bba05f55d4)
+
+- DMA : Direct Memory Access
+
+아주 대용량 전송의 경우 다이렉트로 메모리에 접근함
+
+순서 이미지
 ## 13장. File System Interface
 
 - 파일은 운영체제의 의하여 정의되고 구현되는 추상적인 자료형이다.
