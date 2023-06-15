@@ -152,7 +152,7 @@ Cpu에서 실행중인 프로세스가 page fault가 발생하면 해당 프로�
 4. CPU에게 인터럽트를 보내 PO의 작업을 요청
 5. OS가 해당 작업을 이어 받음
 6. driver의 작업이 종료되어 fileOpen 준비가 끝나 컨택스트 스위치가 발생
-7. 
+7. P1에 대해서 실행하게 된다.
 
 ## 12. 파일이 실제 디스크에 저장되는 과정
 
@@ -160,16 +160,47 @@ Cpu에서 실행중인 프로세스가 page fault가 발생하면 해당 프로�
 
 ![Image](https://github.com/fkdl0048/ToDo/assets/84510455/d6fcc915-0161-4be1-8830-003e8abc8242)
 
+1. application programs: 해당 파일을 저장할 때 name을 넘긴다.
+2. logical file system: 해당 파일의 logical 주소를 file-organization에 넘겨준다.
+3. file-organization module: logical 주소를 physical하게 바꿔주는 역할을 합니다. (base 레지스터, limit 레지스터)
+4. basic file system: 해당 주소를  I/O control에게 블락의 취를 전달한다.
+5. I/O Controller: devices가 disk에서 몇번 실린더, 트랙, 섹터에 상세한 주소로 커맨드를 바꿔주는 역할을 한다. 이후 저장 작업을 수행
+
 ## 13. disk read
 
 10, 22, 20, 2, 40, 6, 38 실린더와 같은 디스크 요청들이 Disk driver로부터 들어왔다. 실린더 1을 움직이는데 걸리는 탐색시간은 6msec이다. 다음 알고리즘들을 사용하면 얼마나 많은 탐색시간이 필요한가? 모든 경우에 arm은 cylinder20에서 시작한다고 가정하자
 
 1. First Come, First Service
+
+먼저 들어온 것 부터 처리
+
+20에서 10으로 (+ 10)
+10에서 22로(+ 12)
+22에서 20(+ 2)
+20에서 2(+ 18)
+2에서 40(+ 38)
+40에서 6(+ 34)
+6에서 38(+ 32)
+
+10 + 12 + 2 + 18 + 38 + 34 + 32 = 146 * 6sec
+
 2. Elevator(SCAN) algorithm (initially moved upward)
+
+왼쪽을 먼저 찍고 이동
+
+78나옴
 
 ## 14. time sharing
 
 현재 컴퓨터 내에서 A 프로그램과 B 프로그램이 동시(time sharing)에 수행되고 있다고 가정하자. A 프로그램이 Data read instruction (I/O instruction) 을 수행하고 있고 B 프로그램이 수학적 계산 프로그램 (CPU instruction)을 수행하고 있는 경우 OPTIMAL 한 Operating System 이 하는 일을 I/O 관련 사항 (device, controller, driver)을 포함하여 매우 상세히 설명하라.
+
+A프로그램이 먼저 실행된다면 read가 발생되고 이를 O/S에 Open을 요청하게 된다(시스템콜, 인터럽트)  
+
+그렇다면 Cpu는 해당 요청시간동안 기다리는 것이 아닌 time sharing을 통해 OS가(CPU) B프로그램을 수행하도록 하는 것이다.
+
+A프로그램의 read준비가 완료되었다면 인터럽트를 발생시켜 B프로그램의 정보를 PCB에 저장하고 A프로그램에 대한 수행한다. (인터럽트)
+
+여러 프로세스를 동시에 처리하는 것 처럼 보이게 된다.
 
 ## 15
 
@@ -180,6 +211,14 @@ Load R7, abc : 메모리 abc 의 내용을 레지스터 7번에 저장
 1010 0111 XXXXXXXX
 
 (1010 : load, 0111 : register 7, XXXXXXXX : the rest 8bits are Memory address)
+
+0X10100000
+
+가장 비효율적인 것은 compile time으로 컴파일 타임에 메모리를 할당하기 때문에(변수 할당) Logical주소가 아닌 Physical주소로써 사용을 해서 같아져버리는 것입니다.
+
+반면에, 효율적인 방식은 실행이 될 때 주소를 바꾸어주는 방식으로써 예를 들어 abc의 내용이 8천 주소의 번지에 있다면 8천을 그대로 쓰는 것이 아닌 load가 되었을때의 시작점이 10000번지에서 시작을 한다면 실제로 abc 내용은 시작을 더해준 18000으로 찾아가는 방식입니다. 이러한 것은 MMU 하드웨어적으로 처리되기에 효율적이고 logical 주소를 사용하기에 더 편리합니다.
+
+++ 실행시 마다 주소를 다시 할당한다.
 
 ## 16
 
