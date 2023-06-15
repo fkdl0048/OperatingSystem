@@ -372,6 +372,8 @@ interrupt driven I/O : wait 과 signal (이미지 첨부)
 
 - DMA : Direct Memory Access
 
+DMA 란 CPU의 개입 없이 I/O 장치와 기억장치 사이의 데이터를 전송하는 접근 방식이다. 
+
 아주 대용량 전송의 경우 다이렉트로 메모리에 접근함
 
 ## 13장. File System Interface
